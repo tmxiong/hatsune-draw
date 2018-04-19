@@ -1,0 +1,53 @@
+{
+  "_args": [
+    [
+      "react-native-easy-loading@1.0.4",
+      "/Users/timxiong/Documents/caipiao/xiaohuamao/Hatsune-1.3.9"
+    ]
+  ],
+  "_from": "react-native-easy-loading@1.0.4",
+  "_id": "react-native-easy-loading@1.0.4",
+  "_inBundle": false,
+  "_integrity": "sha1-ReM386UebAfjhspwesc+ia1shRU=",
+  "_location": "/react-native-easy-loading",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "react-native-easy-loading@1.0.4",
+    "name": "react-native-easy-loading",
+    "escapedName": "react-native-easy-loading",
+    "rawSpec": "1.0.4",
+    "saveSpec": null,
+    "fetchSpec": "1.0.4"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "http://registry.npm.taobao.org/react-native-easy-loading/download/react-native-easy-loading-1.0.4.tgz",
+  "_spec": "1.0.4",
+  "_where": "/Users/timxiong/Documents/caipiao/xiaohuamao/Hatsune-1.3.9",
+  "author": {
+    "name": "Yenole"
+  },
+  "bugs": {
+    "url": "https://github.com/Yenole/react-native-easy-loading/issues"
+  },
+  "description": "适用iOS、Android",
+  "homepage": "https://github.com/Yenole/react-native-easy-loading#readme",
+  "keywords": [
+    "react",
+    "loading"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "react-native-easy-loading",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yenole/react-native-easy-loading.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.4"
+}

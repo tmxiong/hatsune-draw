@@ -1,0 +1,58 @@
+{
+  "_from": "react-native-smart-sortable-sudoku-grid",
+  "_id": "react-native-smart-sortable-sudoku-grid@1.0.5",
+  "_inBundle": false,
+  "_integrity": "sha1-jGQh1tRDqZSRzn3c+yePqLooFb0=",
+  "_location": "/react-native-smart-sortable-sudoku-grid",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "react-native-smart-sortable-sudoku-grid",
+    "name": "react-native-smart-sortable-sudoku-grid",
+    "escapedName": "react-native-smart-sortable-sudoku-grid",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "http://registry.npm.taobao.org/react-native-smart-sortable-sudoku-grid/download/react-native-smart-sortable-sudoku-grid-1.0.5.tgz",
+  "_shasum": "8c6421d6d443a99491ce7ddcfb278fa8ba2815bd",
+  "_spec": "react-native-smart-sortable-sudoku-grid",
+  "_where": "/Users/timxiong/Documents/caipiao/xiaohuamao/Hatsune-1.3.9",
+  "author": {
+    "name": "HISAME SHIZUMARU"
+  },
+  "bugs": {
+    "url": "https://github.com/react-native-component/react-native-smart-sortable-sudoku-grid/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "react-native-smart-timer-enhance": "^1.0.2"
+  },
+  "deprecated": false,
+  "description": "A smart sortable sudoku grid for React Native apps",
+  "homepage": "https://github.com/react-native-component/react-native-smart-sortable-sudoku-grid#readme",
+  "keywords": [
+    "react-native",
+    "smart",
+    "sortable",
+    "sudoku",
+    "grid",
+    "component"
+  ],
+  "license": "MIT",
+  "main": "SortableSudokuGrid.js",
+  "name": "react-native-smart-sortable-sudoku-grid",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/react-native-component/react-native-smart-sortable-sudoku-grid.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.5"
+}
