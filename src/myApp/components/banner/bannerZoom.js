@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 
 import commonFn from '../../public/utils/commonFun';
+import {Card} from 'native-base';
 export default class Banner extends PureComponent {
 
     constructor(props) {
@@ -27,11 +28,11 @@ export default class Banner extends PureComponent {
 
     static defaultProps = {
         // 页面高度
-        pageHeight: commonFn.picHeight(300),
+        pageHeight: commonFn.picHeight(370),
         // 页面宽度
         pageWidth: commonFn.deviceWidth()-commonFn.picWidth(80),
         // 两个页面之间的宽度
-        pageGap: commonFn.picWidth(10),
+        pageGap: 20,
         bannerData: [null,null,null],
         autoScroll: true,
         //bannerList:[{imgsrc:require('../imgs/banner/banner_default.png'),title:'数据正在加载...'}],
@@ -67,17 +68,20 @@ export default class Banner extends PureComponent {
                 }
 
                 arr.push(
-                    <View
+                    <Card
                         key={i}
-                        style={{width:pageWidth,height:pageHeight,backgroundColor:'#fff',borderRadius:10,
+                        style={{width:pageWidth,height:pageHeight,backgroundColor:'#fff',borderRadius:6,
                             ...marginStyle}}
                         cardElevation={4}
                         cardMaxElevation={0}
                         cornerRadius={6}>
 
-                        {bannerData[i]}
+                        {/*{bannerData[i]}*/}
+                        <Image
+                            style={{borderRadius:6,width:pageWidth,height:pageHeight,resizeMode:'stretch'}}
+                            source={bannerData[i]}/>
 
-                    </View>);
+                    </Card>);
             }
             return arr;
 

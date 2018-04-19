@@ -76,7 +76,7 @@ export default class articles extends PureComponent {
             isLoading:false,
             isRefreshing:false,
             data: data.data.dataConfig.data,
-            ds: this.state.ds.cloneWithRows(data.data.dataConfig.data)
+            ds: this.state.ds.cloneWithRows(data.data.dataConfig.data.slice(0,5))
         });
     }
 
@@ -130,7 +130,7 @@ export default class articles extends PureComponent {
                         renderRow={this._renderRow.bind(this)}
                     /> :
                     <TouchableOpacity
-                        style={{width:cfn.deviceWidth(),height:50,alignItems:'center',justifyContent:'center',marginTop:20}}
+                        style={{width:cfn.deviceWidth()-20,height:50,alignItems:'center',justifyContent:'center',marginTop:20}}
                         activeOpacity={0.8} onPress={()=>this.getData(false)}>
                         <Text>{this.state.isError ? '没加载出来，点击重试' : '正在加载...'}</Text>
                     </TouchableOpacity>}
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
         minHeight:cfn.picHeight(200),
     },
     cp_btn_container: {
-        width: cfn.deviceWidth(),
+        width: cfn.deviceWidth()-30,
         height: cfn.picHeight(170),
         flexDirection: 'row',
         borderBottomColor: '#ddd',
@@ -173,33 +173,33 @@ const styles = StyleSheet.create({
     },
 
     item_container: {
-        width: cfn.deviceWidth(),
+        width: cfn.deviceWidth()-30,
         height: cfn.picHeight(160),
         flexDirection: 'row',
         borderBottomWidth: 1,
-        borderBottomColor: '#ddd',
+        borderBottomColor: '#eee',
         alignItems: 'center',
         alignSelf: 'center',
         backgroundColor: '#fff'
     },
     item_text_container: {
         flexWrap: 'wrap',
-        width: cfn.deviceWidth() - cfn.picWidth(180 + 40),
-        paddingLeft: cfn.picWidth(20),
+        width: cfn.deviceWidth() - cfn.picWidth(180 + 40 + 50),
+        paddingLeft: cfn.picWidth(10),
         height: cfn.picHeight(120),
     },
     item_source: {
         fontSize: 13,
         color: '#888',
         position: 'absolute',
-        left: cfn.picWidth(20),
+        left: cfn.picWidth(10),
         bottom: 0
     },
     item_time: {
         fontSize: 13,
         color: '#888',
         position: 'absolute',
-        right: cfn.picWidth(20),
+        right: cfn.picWidth(10),
         bottom: 0
     },
     item_title: {
@@ -209,6 +209,7 @@ const styles = StyleSheet.create({
         width: cfn.picWidth(180),
         height: cfn.picHeight(120),
         marginLeft: cfn.picWidth(20),
+        borderRadius:5
     }
 
 });

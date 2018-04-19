@@ -19,6 +19,9 @@ import dateBase from '../../public/utils/dateBase'
 import {defaultIcon} from '../../public/config/images'
 import {getUserDataBySessionToken} from '../../public/utils/storage'
 import config from '../../public/config/config'
+import imgs from '../../public/config/images'
+import {Card} from 'native-base'
+const drawWidth = cfn.deviceWidth()/3 * 2;
 export default class index extends Component {
 
     static defaultProps = {};
@@ -128,32 +131,26 @@ export default class index extends Component {
     render() {
         return (
             <View style={styles.container}>
-                {/*<Header*/}
-                {/*title={"我的"}*/}
-                {/*leftBtn={""}*/}
-                {/*leftType="text"*/}
-                {/*leftFun={()=>{}}*/}
-                {/*rightBtn={""}*/}
-                {/*rightType="text"*/}
-                {/*rightFun={()=>{}}*/}
-                {/*/>*/}
-                <TouchableOpacity
-                    onPress={()=>cfn.goToPage(this,this.state.isLogin ? 'userInfo':'loginAndRegist',
-                        {name:'登录',updateToLogin:this.updateToLogin.bind(this),updateToNoLogin:this.updateToNoLogin.bind(this)})}
-                    activeOpacity={1} style={[styles.itemHeader,{backgroundColor:config.baseColor}]}>
-                    <View style={{alignItems:'center'}}>
-                        <View style={styles.userIconContainer}>
-                            {this.state.isLogin ?
-                                <Image style={styles.userImg} source={defaultIcon}/> :
-                                <Icon style={styles.userIcon} name={'ios-contact-outline'}/>}
-                        </View>
 
-                        <View style={styles.userContent}>
+                <View style={{height: 220,width:drawWidth,  alignItems:'center'}}>
+                    <View style={{width:drawWidth,backgroundColor:config.baseColor,height:125}}/>
+
+                    <View style={{position:'absolute',top:80,zIndex:0}}>
+                        <Card style={{width:drawWidth - 20,height:120, borderRadius:10,backgroundColor:'#fff',alignItems:'center'}}>
+
                             <Text style={styles.userName}>{this.state.isLogin ? global.userData.username : '登录/注册'}</Text>
                             <Text style={styles.userDesc}>{this.getLoginDesc(this.state.isLogin)}</Text>
-                        </View>
+
+                        </Card>
                     </View>
-                </TouchableOpacity>
+
+                    <Card style={[styles.userImg,{marginTop: cfn.picWidth(60), position:'absolute'}]}>
+                        <TouchableOpacity activeOpacity={0.8} onPress={()=>cfn.goToPage(this,this.state.isLogin ? 'userInfo':'loginAndRegist')}>
+                            <Image style={styles.userImg} source={imgs.noLoginIcon}/>
+                        </TouchableOpacity>
+                    </Card>
+
+                </View>
 
                 <ScrollView>
                     <View style={{height:cfn.picHeight(30)}}/>
@@ -241,7 +238,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     itemHeader: {
-        width:cfn.deviceWidth()/3*2,
+        width:drawWidth,
         height:cfn.picHeight(350),
         backgroundColor:'#fff',
         flexDirection:'row',
@@ -263,22 +260,22 @@ const styles = StyleSheet.create({
 
     },
     userImg: {
-        width:cfn.picWidth(120),
-        height:cfn.picWidth(120),
-        borderRadius:cfn.picWidth(75),
+        width:cfn.picWidth(140),
+        height:cfn.picWidth(140),
+        borderRadius:cfn.picWidth(70),
     },
     userContent: {
-        width:cfn.deviceWidth()/3*2,
+        width:drawWidth,
         alignItems:'center'
     },
     userName: {
         fontSize:16,
-        color:'#eee',
-        margin:10
+        color:'#888',
+        marginTop:40
     },
     userDesc: {
-        color:'#ddd',
-        marginTop:cfn.picHeight(10),
+        color:'#aaa',
+        marginTop:cfn.picHeight(20),
         fontSize:12
 
     },
@@ -287,7 +284,7 @@ const styles = StyleSheet.create({
         color:'#ddd',
     },
     itemBody: {
-        width:cfn.deviceWidth()/3*2,
+        width:drawWidth,
         height:cfn.picHeight(100),
         backgroundColor:'#fff',
         //marginTop:cfn.picHeight(20),

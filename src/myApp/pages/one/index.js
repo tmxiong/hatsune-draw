@@ -28,6 +28,9 @@ import NewsList from '../../components/newsList'
 import config from '../../public/config/config'
 import {connect} from 'react-redux';
 import splashScreen from 'react-native-splash-screen'
+
+const marginVal = 10; //边距为8
+
 class index extends Component {
 
     constructor(props) {
@@ -79,18 +82,17 @@ class index extends Component {
         for(let i = 0; i < data.length; i++) {
             lotteryMenu.push(
                 <TouchableOpacity
-                    onPress={()=>cfn.goToPage(this,'touzhu',
-                        {name:data[i].name, url: data[i].url ,fromMenu:true, data:data[i]})}
-                    activeOpacity={0.8} key={data[i].code} style={styles.menuBodyItem}>
+                    activeOpacity={0.8} key={data[i].code}
+                    style={[styles.menuBodyItem,{width:(cfn.deviceWidth()-marginVal*2)/3 - 2}]}>
                     <Image style={styles.imgIcon} source={data[i].icon}/>
                     <Text>{data[i].name}</Text>
                 </TouchableOpacity>
             )
         }
-
-        this.setState({
-            lotteryMenu:lotteryMenu
-        })
+        return lotteryMenu;
+        // this.setState({
+        //     lotteryMenu:lotteryMenu
+        // })
     }
 
     setToolMenu() {
@@ -101,7 +103,7 @@ class index extends Component {
                     key={'s'+i}
                     activeOpacity={0.8}
                     onPress={()=>cfn.goToPage(this,tools[i].page,{name:tools[i].name,url:tools[i].url,key:tools[i].key})}
-                    style={[styles.toolCell,{borderRightColor:'#eee',borderRightWidth:1}]}>
+                    style={[styles.toolCell]}>
                     <Icon name={tools[i].icon} style={[styles.toolIcon,{color:tools[i].color}]}/>
                     <View style={styles.toolCellHead}>
                         <Text style={styles.toolCellTitle}>{tools[i].name}</Text>
@@ -110,9 +112,10 @@ class index extends Component {
                 </TouchableOpacity>
             )
         }
-        this.setState({
-            toolsMenu:toolsMenu,
-        })
+        return toolsMenu;
+        // this.setState({
+        //     toolsMenu:toolsMenu,
+        // })
     }
 
     render() {
@@ -127,59 +130,62 @@ class index extends Component {
                 />
                 <ScrollView>
                     <BannerZoom
-                        pageGap={20}
+                        pageGap={marginVal}
+                        bannerData={banner}
                         style={{marginTop:10}}
                     />
 
-                    <Card>
-
-                        <View style={[styles.menuContainer]}>
-                            <View style={styles.menuTitle}>
-                                <View style={styles.titleIcon}/>
-                                <Text style={styles.titleText}>时时彩工具</Text>
-                            </View>
-                            <View style={styles.menuBody}>
-                                {/*<View style={[styles.toolCell,{borderRightColor:'#eee',borderRightWidth:1}]}>*/}
-                                {/*<Icon name="ios-trending-up-outline" style={styles.toolIcon}/>*/}
-                                {/*<View style={styles.toolCellHead}>*/}
-                                {/*<Text style={styles.toolCellTitle}>开奖走势</Text>*/}
-                                {/*<Text style={styles.toolCellDesc}>开奖走势开奖走势</Text>*/}
-                                {/*</View>*/}
-                                {/*</View>*/}
-                                {this.state.toolsMenu}
-
-                            </View>
-                        </View>
-
-                    </Card>
-
-                    {/*<View style={styles.menuContainer}>*/}
-                        {/*<View style={styles.menuTitle}>*/}
-                            {/*<View style={styles.titleIcon}/>*/}
-                            {/*<Text style={styles.titleText}>彩种推荐</Text>*/}
-                            {/*<TouchableOpacity*/}
-                                {/*onPress={()=>cfn.goToPage(this,'moreLot',*/}
-                                    {/*{name:'彩种列表',data:this.lottery,reloadMenu:this.getLotteryDataByStorage.bind(this)})}*/}
-                                {/*activeOpacity={0.8}*/}
-                                {/*style={styles.more}>*/}
-                                {/*<Text>更多>></Text>*/}
-                            {/*</TouchableOpacity>*/}
-                        {/*</View>*/}
-                        {/*<View style={styles.menuBody}>*/}
-                            {/*/!*<View style={styles.menuBodyItem}>*!/*/}
-                            {/*/!*<Image style={styles.imgIcon} source={this.lottery[0].icon}/>*!/*/}
-                            {/*/!*<Text>{this.lottery[0].name}</Text>*!/*/}
-                            {/*/!*</View>*!/*/}
-                            {/*{this.state.lotteryMenu}*/}
-                        {/*</View>*/}
-                    {/*</View>*/}
 
 
-
-                    <View style={[styles.menuContainer,{marginTop:cfn.picHeight(20)}]}>
+                    <Card style={[styles.menuContainer]}>
                         <View style={styles.menuTitle}>
                             <View style={styles.titleIcon}/>
-                            <Text style={styles.titleText}>时时彩资讯</Text>
+                            <Text style={styles.titleText}>时时彩工具</Text>
+                        </View>
+                        <View style={styles.menuBody}>
+                            {/*<View style={[styles.toolCell,{borderRightColor:'#eee',borderRightWidth:1}]}>*/}
+                            {/*<Icon name="ios-trending-up-outline" style={styles.toolIcon}/>*/}
+                            {/*<View style={styles.toolCellHead}>*/}
+                            {/*<Text style={styles.toolCellTitle}>开奖走势</Text>*/}
+                            {/*<Text style={styles.toolCellDesc}>开奖走势开奖走势</Text>*/}
+                            {/*</View>*/}
+                            {/*</View>*/}
+                            {/*{this.state.toolsMenu}*/}
+                            {this.setToolMenu()}
+
+                        </View>
+                    </Card>
+
+
+
+                    <Card style={styles.menuContainer}>
+                        <View style={styles.menuTitle}>
+                            <View style={styles.titleIcon}/>
+                            <Text style={styles.titleText}>热门彩种</Text>
+                            <TouchableOpacity
+                                onPress={()=>cfn.goToPage(this,'moreLot',
+                                    {name:'彩种列表',data:this.lottery,reloadMenu:this.getLotteryDataByStorage.bind(this)})}
+                                activeOpacity={0.8}
+                                style={styles.more}>
+                                <Text>更多>></Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={styles.menuBody}>
+                            {/*<View style={styles.menuBodyItem}>*/}
+                            {/*<Image style={styles.imgIcon} source={this.lottery[0].icon}/>*/}
+                            {/*<Text>{this.lottery[0].name}</Text>*/}
+                            {/*</View>*/}
+                            {/*{this.state.lotteryMenu}*/}
+                            {this.setLotteryMenu()}
+                        </View>
+                    </Card>
+
+
+
+                    <Card style={[styles.menuContainer,{marginTop:cfn.picHeight(20)}]}>
+                        <View style={styles.menuTitle}>
+                            <View style={styles.titleIcon}/>
+                            <Text style={styles.titleText}>热门资讯</Text>
                             <TouchableOpacity
                                 onPress={()=>cfn.goToPage(this,'article', {name:'彩种列表'})}
                                 activeOpacity={0.8}
@@ -188,7 +194,7 @@ class index extends Component {
                             </TouchableOpacity>
                         </View>
                         <NewsList _this={this}/>
-                    </View>
+                    </Card>
 
                 </ScrollView>
 
@@ -207,7 +213,8 @@ export default connect()(index)
 const styles = StyleSheet.create({
     container: {
         flex:1,
-        backgroundColor:'#f5f5f5'
+        backgroundColor:'#f5f5f5',
+        alignItems:'center'
     },
     wrapper: {
         height:cfn.picHeight(300),
@@ -220,8 +227,10 @@ const styles = StyleSheet.create({
         backgroundColor:'#f00'
     },
     menuContainer: {
-        width:cfn.deviceWidth(),
-        backgroundColor:'#fff'
+        width:cfn.deviceWidth()- marginVal * 2,
+        backgroundColor:'#fff',
+        borderRadius:6,
+        alignSelf:'center'
     },
     menuTitle: {
         height:cfn.picHeight(80),
@@ -245,7 +254,7 @@ const styles = StyleSheet.create({
     },
     more: {
       position:'absolute',
-        right:5,
+        right:marginVal*3,
         alignItems:'center',
         justifyContent:'center',
         height:cfn.picHeight(80),
@@ -266,12 +275,12 @@ const styles = StyleSheet.create({
         height:cfn.picHeight(120)
     },
     toolCell: {
-        width:cfn.deviceWidth()/2,
+        width:cfn.deviceWidth()/2 - marginVal-2,
         height:cfn.picHeight(200),
         borderBottomColor:'#eee',
-        borderBottomWidth:1,
         flexDirection:'row',
-        alignItems:'center'
+        alignItems:'center',
+        alignSelf: 'center'
     },
     toolIcon: {
         fontSize:50,
