@@ -15,13 +15,15 @@ export default class header extends PureComponent {
     static defaultProps = {
         title:'Header',
 
-        leftBtn:'',
-        leftText:'Left',
+        leftBtn:'ios-arrow-back',
+        leftText:'',
         leftFun:()=>{},
 
         rightBtn:'',
-        rightText:'Right',
+        rightText:'',
         rightFun:()=>{},
+
+        bgColor: config.baseColor,
     };
 
     constructor(props) {
@@ -30,11 +32,11 @@ export default class header extends PureComponent {
     }
 
     render() {
-        const {title, leftBtn, leftText, leftFun, rightBtn, rightText, rightFun} = this.props;
+        const {title, leftBtn, leftText, leftFun, rightBtn, rightText, rightFun, bgColor} = this.props;
 
         return (
-            <View style={styles.container}>
-                <Header style={{marginTop:cfn.statusBarHeight(),backgroundColor:config.baseColor}}>
+            <View style={[styles.container,{backgroundColor:bgColor}]}>
+                <Header style={{marginTop:cfn.statusBarHeight(),backgroundColor:bgColor}}>
                     <Left>
                         <Button onPress={()=>leftFun()} transparent>
                             {leftBtn !== '' ? <Icon style={styles.btn} name={leftBtn} /> : <Text>{leftText}</Text>}
@@ -65,6 +67,7 @@ const styles = StyleSheet.create({
         width:cfn.deviceWidth()
     },
     btn: {
-        minWidth:40
+        minWidth:30,
+        textAlign:'center'
     }
 });

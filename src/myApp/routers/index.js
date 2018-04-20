@@ -10,10 +10,18 @@
 import {StackNavigator,TabNavigator} from "react-navigation";
 import onBackAndroid from '../public/utils/onBackAndroid'
 onBackAndroid.bindHardwareBackPress();
+import handleError from '../public/utils/handleError'
+// handleError();
+
 
 // import welcome from '../pages/welcome';
 // import launch from '../pages/launch'
 // import cp from '../pages/cp';
+
+import one from '../pages/one';
+import two from '../pages/two';
+import three from '../pages/three'
+import four from '../pages/four';
 
 import draw from '../pages/draw';
 import main from '../pages/main'
@@ -43,6 +51,10 @@ const routers = StackNavigator({
     // 欢迎页 引导页
     //welcome: {screen: welcome},
     main:{screen: main, navigationOptions: { header:null,}},
+    one:{screen: one, navigationOptions: { header:null,}},
+    two:{screen: two, navigationOptions: { header:null,}},
+    three:{screen: three, navigationOptions: { header:null,}},
+    four:{screen: four, navigationOptions: { header:null,}},
     // 点开彩票图标后
     touzhu:{screen: touzhu, navigationOptions: { header:null,}},
     //  投注页面点按钮后进入

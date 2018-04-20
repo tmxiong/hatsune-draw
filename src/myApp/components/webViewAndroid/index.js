@@ -10,7 +10,6 @@ import {
     StyleSheet,
     Text,
     View,
-    WebView,
     ScrollView,
     RefreshControl,
     Animated,
@@ -76,7 +75,7 @@ export default class webViewAndroid extends Component {
 
     _checkNetInfo() {
         var _this = this;
-        NetInfo.fetch().done((netInfo)=>{
+        NetInfo.getConnectionInfo().done((netInfo)=>{
             //console.warn(netInfo)
             if(netInfo != 'NONE') { // 有网
                 _this.timer1 = setTimeout(()=>{

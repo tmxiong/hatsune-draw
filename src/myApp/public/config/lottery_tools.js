@@ -9,9 +9,10 @@ module.exports=[
         icon:'md-trending-up',
         url:'https://m.aicai.com/zst/cqssc/5xjbzs.do?vt=5&clientType=0',
         desc:'时时彩基本走势图',
-        color:'#25A9FF',
+        color:'#fff',
         page:'trend',
-        key:''
+        key:'',
+        bgColor:'#46BC62',
     },
     {
         name:'大小奇偶',
@@ -19,24 +20,28 @@ module.exports=[
         url:'http://m.aicai.com/zst/ssq/dxjo.do?vt=5&clientType=0',
         page:'trend',
         desc:'大小奇偶走势图',
-        color:'#46BC62',
-        key:''
+        color:'#fff',
+        key:'',
+        bgColor:'#25A9FF'
     },
     {
         name:'和值走势',
         icon:'md-tennisball',
         url:'http://m.aicai.com/zst/xk3/hzzs.do?vt=5&clientType=0',
         page:'trend',
-        key: 'readArticle',
         desc:'时时彩和值走势图',
+        color:'#fff',
+        key: 'readArticle',
+        bgColor:'#FF5D3B'
     },
     {
         name:'预测资讯',
         icon:'md-list-box',
         url:'http://m.aicai.com/newInfo/index.do?navId=2&agentId=1&vt=5',
         desc:'开奖资讯精准预测',
-        color:'#FFCC99',
-        page:'article'
+        color:'#fff',
+        page:'article',
+        bgColor:'#d58fff'
     },
     {
         name:'我的收藏',
@@ -45,7 +50,8 @@ module.exports=[
         desc:'走势分析一网打尽',
         color:'#FF5D3B',
         page:'',
-        key:''
+        key:'',
+
     },
 
     {

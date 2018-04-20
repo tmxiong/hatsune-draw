@@ -15,9 +15,6 @@ import Four from '../four';
 import cfn from '../../public/utils/commonFun'
 import storage from '../../public/utils/storage'
 import config from '../../public/config/config'
-import handleError from '../../public/utils/handleError'
-// handleError();
-
 
 storage.initStorage();
 storage.initAV();

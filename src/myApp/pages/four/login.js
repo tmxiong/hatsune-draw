@@ -129,7 +129,7 @@ export default class login extends PureComponent {
                                 <View style={{height:20}}>
                                     {this.state.errorMsg ? <Text style={{color:'#f00',fontWeight:'bold'}}>错误：{this.state.errorMsg}</Text> : null}
                                 </View>
-                                <Button onPress={()=>this._submit()} full style={styles.btn}>
+                                <Button onPress={this._submit.bind(this)} full style={styles.btn}>
                                     <Text style={{color:'#fff',fontSize:16}}>登录</Text>
                                 </Button>
                             </View>

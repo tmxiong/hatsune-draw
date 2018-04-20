@@ -21,7 +21,7 @@ import MarqueeLabel from '../../components/notice/marqueeLabel'
 import {Card,CardItem,Body} from 'native-base'
 import lotterys from '../../public/config/lotterys_new'
 import tools from '../../public/config/lottery_tools'
-import global from '../../public/global/global'
+import SearchLottery from '../../components/searchLottery'
 import {Icon} from 'native-base';
 import {load} from '../../public/utils/storage'
 import NewsList from '../../components/newsList'
@@ -89,10 +89,10 @@ class index extends Component {
                 </TouchableOpacity>
             )
         }
-        return lotteryMenu;
-        // this.setState({
-        //     lotteryMenu:lotteryMenu
-        // })
+        // return lotteryMenu;
+        this.setState({
+            lotteryMenu:lotteryMenu
+        })
     }
 
     setToolMenu() {
@@ -103,7 +103,7 @@ class index extends Component {
                     key={'s'+i}
                     activeOpacity={0.8}
                     onPress={()=>cfn.goToPage(this,tools[i].page,{name:tools[i].name,url:tools[i].url,key:tools[i].key})}
-                    style={[styles.toolCell]}>
+                    style={[styles.toolCell,{marginBottom:20,backgroundColor:tools[i].bgColor}]}>
                     <Icon name={tools[i].icon} style={[styles.toolIcon,{color:tools[i].color}]}/>
                     <View style={styles.toolCellHead}>
                         <Text style={styles.toolCellTitle}>{tools[i].name}</Text>
@@ -122,11 +122,11 @@ class index extends Component {
         return(
             <View style={styles.container}>
                 <Header
-                    title={'首页'}
+                    title={config.appName}
                     leftBtn={"ios-menu"}
                     leftFun={()=>cfn.goToPage(this,'DrawerOpen')}
-                    rightType={'text'}
-                    rightBtn={''}
+                    rightBtn={'md-search'}
+                    rightFun={()=>this.searchLottery.showModal()}
                 />
                 <ScrollView>
                     <BannerZoom
@@ -170,13 +170,13 @@ class index extends Component {
                                 <Text>更多>></Text>
                             </TouchableOpacity>
                         </View>
-                        <View style={styles.menuBody}>
+                        <View style={[styles.menuBody,{justifyContent:'flex-start'}]}>
                             {/*<View style={styles.menuBodyItem}>*/}
                             {/*<Image style={styles.imgIcon} source={this.lottery[0].icon}/>*/}
                             {/*<Text>{this.lottery[0].name}</Text>*/}
                             {/*</View>*/}
-                            {/*{this.state.lotteryMenu}*/}
-                            {this.setLotteryMenu()}
+                            {this.state.lotteryMenu}
+                            {/*{this.setLotteryMenu()}*/}
                         </View>
                     </Card>
 
@@ -197,6 +197,9 @@ class index extends Component {
                     </Card>
 
                 </ScrollView>
+                <SearchLottery
+                    ref={ref=>this.searchLottery = ref}
+                />
 
                 <StatusBar hidden={false}
                            translucent= {true}
@@ -262,6 +265,8 @@ const styles = StyleSheet.create({
     menuBody: {
         flexDirection:'row',
         flexWrap:'wrap',
+        alignItems:'center',
+        justifyContent:'space-around'
 
     },
     menuBodyItem: {
@@ -275,12 +280,14 @@ const styles = StyleSheet.create({
         height:cfn.picHeight(120)
     },
     toolCell: {
-        width:cfn.deviceWidth()/2 - marginVal-2,
+        width:cfn.deviceWidth()/2 - marginVal-20,
         height:cfn.picHeight(200),
         borderBottomColor:'#eee',
         flexDirection:'row',
         alignItems:'center',
-        alignSelf: 'center'
+        alignSelf: 'center',
+        backgroundColor:'#229ae9',
+        borderRadius:6
     },
     toolIcon: {
         fontSize:50,
@@ -297,9 +304,10 @@ const styles = StyleSheet.create({
     },
     toolCellTitle: {
         fontSize:18,
+        color:'#fff'
     },
     toolCellDesc: {
-        color:'#ccc',
+        color:'#fff0e6',
         marginTop:5,
         fontSize:12
     }

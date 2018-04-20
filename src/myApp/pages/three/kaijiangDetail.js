@@ -207,7 +207,6 @@ class kaijiangDetail extends Component {
                         leftBtn={"ios-arrow-back"}
                         leftFun={()=>cfn.goBack(this)}
                         rightBtn={"md-more"}
-                        rightType={'icon'}
                     />
                     <Menu
                         style={{position:'absolute',top:cfn.statusBarHeight(),right:0,width:56,height:56,backgroundColor:'transparent'}}

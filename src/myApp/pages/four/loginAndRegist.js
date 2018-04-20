@@ -11,7 +11,8 @@ import Header from '../../components/header'
 import cfn from '../../public/utils/commonFun'
 import Login from './login';
 import Regist from './regist';
-import {Loading, EasyLoading} from '../../components/loading'
+import {Loading, EasyLoading} from '../../components/loading';
+import config from '../../public/config/config'
 export default class helloPage extends Component {
 
     static defaultProps = {};
@@ -68,9 +69,9 @@ export default class helloPage extends Component {
                     title={this.state.isLogin ? "欢迎登录" : "欢迎注册"}
                     leftBtn={"ios-arrow-back"}
                     leftFun={()=>cfn.goBack(this)}
-                    rightBtn={this.state.isLogin ? "去注册" : "去登录"}
-                    rightType="text"
+                    rightText={this.state.isLogin ? "去注册" : "去登录"}
                     rightFun={()=>this.onPressSwitch()}
+                    bgColor={this.state.isLogin ?  config.baseColor : '#37a46f'}
                 />
 
                 <ScrollView

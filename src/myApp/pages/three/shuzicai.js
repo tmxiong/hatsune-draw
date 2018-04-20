@@ -26,11 +26,6 @@ class shuzicai extends Component {
         };
     }
 
-    componentWillReceiveProps(props) {
-        console.log(props);
-
-    }
-
     componentDidMount() {
         //console.warn('componentDidMount')
 

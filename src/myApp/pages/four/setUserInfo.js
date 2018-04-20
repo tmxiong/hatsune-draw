@@ -101,8 +101,7 @@ export default class helloPage extends Component {
                     title={this.params.name}
                     leftBtn={"ios-arrow-back"}
                     leftFun={()=>cfn.goBack(this)}
-                    rightBtn={"完成"}
-                    rightType="text"
+                    rightText={"完成"}
                     rightFun={()=>this.onPressOK(this.params.key,this.inputStr)}
                 />
 

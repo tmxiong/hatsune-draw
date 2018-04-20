@@ -132,7 +132,7 @@ export default class index extends Component {
         return (
             <View style={styles.container}>
 
-                <View style={{height: 220,width:drawWidth,  alignItems:'center'}}>
+                <View style={{height: 210,width:drawWidth,  alignItems:'center'}}>
                     <View style={{width:drawWidth,backgroundColor:config.baseColor,height:125}}/>
 
                     <View style={{position:'absolute',top:80,zIndex:0}}>
@@ -145,8 +145,10 @@ export default class index extends Component {
                     </View>
 
                     <Card style={[styles.userImg,{marginTop: cfn.picWidth(60), position:'absolute'}]}>
-                        <TouchableOpacity activeOpacity={0.8} onPress={()=>cfn.goToPage(this,this.state.isLogin ? 'userInfo':'loginAndRegist')}>
-                            <Image style={styles.userImg} source={imgs.noLoginIcon}/>
+                        <TouchableOpacity activeOpacity={0.8}
+                                          onPress={()=>cfn.goToPage(this,this.state.isLogin ? 'userInfo':'loginAndRegist',
+                                              {updateToLogin: this.updateToLogin.bind(this),goBack:cfn.goBack(this),updateToNoLogin:this.updateToNoLogin.bind(this)})}>
+                            <Image style={styles.userImg} source={this.state.isLogin ? imgs.defaultIcon : imgs.noLoginIcon}/>
                         </TouchableOpacity>
                     </Card>
 
@@ -154,6 +156,44 @@ export default class index extends Component {
 
                 <ScrollView>
                     <View style={{height:cfn.picHeight(30)}}/>
+                    <Card style={{width:drawWidth-20,height:120,alignSelf:'center',borderRadius:10}}>
+                        <View style={{width:drawWidth-20,height:40,alignItems:'center',justifyContent:'center',backgroundColor:'#FF5D3B',borderTopLeftRadius:10,borderTopRightRadius:10}}>
+                            <Text style={{fontSize:16,color:'#fff'}}>看开奖</Text>
+                        </View>
+                        <View style={{width:drawWidth-20,height:80,flexWrap:'wrap',flexDirection:'row'}}>
+                            <TouchableOpacity onPress={()=>cfn.goToPage(this,'three')} activeOpacity={0.8} style={styles.menuCell}>
+                                <Text>我的关注</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={()=>cfn.goToPage(this, 'three', {initialPage:2})} activeOpacity={0.8} style={styles.menuCell}>
+                                <Text>高频彩</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={()=>cfn.goToPage(this, 'three', {initialPage:1})} activeOpacity={0.8} style={styles.menuCell}>
+                                <Text>数字彩</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={()=>cfn.goToPage(this, 'three', {initialPage:3})} activeOpacity={0.8} style={styles.menuCell}>
+                                <Text>竞技彩</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                    </Card>
+
+                    <Card style={{width:drawWidth-20,height:160,alignSelf:'center',borderRadius:10,marginTop:20}}>
+                        <View style={{width:drawWidth-20,height:40,alignItems:'center',justifyContent:'center',backgroundColor:'#37a46f',borderTopLeftRadius:10,borderTopRightRadius:10}}>
+                            <Text style={{fontSize:16,color:'#fff'}}>看走势</Text>
+                        </View>
+                        <View style={{width:drawWidth-20,height:120,flexWrap:'wrap',flexDirection:'row'}}>
+                            <View style={styles.menuCell}><Text>关注</Text></View>
+                            <View style={styles.menuCell}><Text>关注</Text></View>
+                            <View style={styles.menuCell}><Text>关注</Text></View>
+                            <View style={styles.menuCell}><Text>关注</Text></View>
+                            <View style={styles.menuCell}><Text>关注</Text></View>
+                            <View style={styles.menuCell}><Text>关注</Text></View>
+                        </View>
+
+                    </Card>
+
+
+
                     {/*<TouchableOpacity activeOpacity={0.8}*/}
                     {/*onPress={()=>cfn.goToPage(this,'myArticle',*/}
                     {/*{name:'我收藏的文章',key:'collectedArticle'})} style={styles.itemBody}>*/}
@@ -310,4 +350,7 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         right:cfn.picWidth(30)
     },
+    menuCell: {
+        width:(drawWidth-20)/2,alignItems:'center',justifyContent:'center',height:40,borderWidth:1,borderColor:'transparent',borderBottomColor:'#eee',borderRightColor:'#eee'
+    }
 });

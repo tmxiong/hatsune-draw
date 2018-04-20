@@ -19,6 +19,7 @@ import lottery from '../../public/config/lottery_kaijiang'
 import urls from '../../public/config/urls'
 import {connect} from 'react-redux';
 import {getOpenCode} from '../../app/actions/kaijiang'
+import config from '../../public/config/config'
 class three extends Component {
 
     constructor(props) {
@@ -27,8 +28,8 @@ class three extends Component {
             webViewOffset:50,
             data:[],
 
-
-        }
+        };
+        this.initialPage = props.navigation.state.params.initialPage || 0;
 
     }
 
@@ -102,13 +103,11 @@ class three extends Component {
     render() {
         return (
             <View style={styles.container}>
-                {/*<Header*/}
-                    {/*title={"开奖大厅"}*/}
-                    {/*leftBtn={""}*/}
-                    {/*leftType="text"*/}
-                    {/*rightBtn={""}*/}
-                    {/*rightType="text"*/}
-                {/*/>*/}
+                <Header
+                    title={"开奖大厅"}
+                    leftFun={()=>cfn.goBack(this)}
+
+                />
 
 
                 {/*<WebViewAndroid*/}
@@ -119,10 +118,11 @@ class three extends Component {
                     {/*source={{uri:'https://m.aicai.com/kjgg/index.do?agentId=1&vt=5'}} // or use the source(object) attribute...*/}
                 {/*/>*/}
 
-                <View style={{height:30,backgroundColor:'#d22'}}/>
+                {/*<View style={{height:30,backgroundColor:config.baseColor}}/>*/}
                 <ScrollableTabView
+                    initialPage={this.initialPage}
                     locked={true}
-                    tabBarBackgroundColor="#d22"
+                    tabBarBackgroundColor={config.baseColor}
                     tabBarTextStyle={{color:'#fff'}}
                     tabBarUnderlineStyle={{backgroundColor:'#fff'}}
                 >

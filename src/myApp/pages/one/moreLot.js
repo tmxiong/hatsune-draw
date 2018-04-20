@@ -145,15 +145,6 @@ export default class helloPage extends Component {
             //console.log(`_onPressManagementButton get sorted/added/removed candidateDataSource`)
             //console.log(candidateDataSource)
 
-            // global.storage.save({
-            //     key: 'lotteryMenu',  // 注意:请不要在key中使用_下划线符号!
-            //     id: 'lotteryMenu',
-            //     data: sortedDataSource,
-            //
-            //     // 如果不指定过期时间，则会使用defaultExpires参数
-            //     // 如果设为null，则永不过期
-            //     expires: null
-            // });
 
             save('lotteryMenu','lotteryMenu',sortedDataSource);
         }
@@ -224,8 +215,9 @@ export default class helloPage extends Component {
                     title={this.params.name}
                     leftBtn={"ios-arrow-back"}
                     leftFun={()=>cfn.goBack(this)}
-                    rightBtn={''}
-                    rightType="text"
+                    rightText={this.state.managementButtonText}
+                    rightFun={this._onPressManagementButton.bind(this)}
+
 
                 />
                 <View style={{height:40,justifyContent:'center'}}>

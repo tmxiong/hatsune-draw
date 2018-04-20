@@ -34,6 +34,11 @@ exports.getHistoryLotteryCode = function (id) {
     return 'https://route.showapi.com/44-2?code='+ id +'&count=20&endTime='+ new Date().Format('yyyy-MM-dd hh:mm:ss') +'&showapi_appid=46754&showapi_test_draft=false&showapi_timestamp='+ timeStamp() +'&showapi_sign='+secret;
 };
 
+//查询某一期的彩票开奖号码
+exports.getSearchLotteryCode = function (issue, id) {
+    return 'https://route.showapi.com/44-3?code='+ id +'&expect='+ issue +'&showapi_appid=46754&showapi_test_draft=false&showapi_timestamp='+ timeStamp() +'&showapi_sign='+secret;
+};
+
 // 彩票玩法介绍
 exports.getHelp = function (type) {
     if(type.match('https')) {
